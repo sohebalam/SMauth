@@ -1,0 +1,50 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add express-router
+
+PATH: 
+  C:\Users\soheb\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\local\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\soheb\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\WINDOWS\System32\OpenSSH;C:\Program Files\Intel\WiFi\bin;C:\Program Files\Common Files\Intel\WirelessCommon;C:\Program Files\Git\cmd;C:\Program Files\nodejs;C:\Program Files (x86)\Yarn\bin;C:\Users\soheb\scoop\persist\yarn\global\node_modules\.bin;C:\Users\soheb\scoop\apps\yarn\current\Yarn\bin;C:\Users\soheb\scoop\shims;C:\Users\soheb\AppData\Local\Microsoft\WindowsApps;C:\Users\soheb\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\soheb\AppData\Local\Yarn\bin;C:\Program Files\Git\usr\bin\vendor_perl;C:\Program Files\Git\usr\bin\core_perl
+
+Yarn version: 
+  1.22.5
+
+Node version: 
+  15.1.0
+
+Platform: 
+  win32 x64
+
+Trace: 
+  Error: EPERM: operation not permitted, unlink 'C:\Projects\SocialMediaProject-Youtube-master\SocialMediaProject-Youtube-master\node_modules\file-uri-to-path\test'
+
+npm manifest: 
+  {
+    "name": "mernstacksocialnetwork",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "type": "module",
+    "scripts": {
+      "forever": "forever -w server.js",
+      "client": "cd frontend && npm start"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+      "bcryptjs": "^2.4.3",
+      "config": "^3.3.1",
+      "cors": "^2.8.5",
+      "express": "^4.17.1",
+      "express-router": "^0.0.1",
+      "express-validator": "^6.6.0",
+      "forever": "^3.0.0",
+      "gravatar": "^1.8.1",
+      "jsonwebtoken": "^8.5.1",
+      "mongoose": "^5.9.25"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
