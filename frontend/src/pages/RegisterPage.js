@@ -1,10 +1,55 @@
-import React, { useState } from "react";
-import { registerUser } from "../actions/auth.actions/registerUser";
-import { connect } from "react-redux";
-import ErrorMessage from "../components/ErrorMessage";
+import React, { useState } from "react"
+import Avatar from "@material-ui/core/Avatar"
+import Button from "@material-ui/core/Button"
+import CssBaseline from "@material-ui/core/CssBaseline"
+import TextField from "@material-ui/core/TextField"
+import FormControlLabel from "@material-ui/core/FormControlLabel"
+import Checkbox from "@material-ui/core/Checkbox"
+import Link from "@material-ui/core/Link"
+import Grid from "@material-ui/core/Grid"
+import Box from "@material-ui/core/Box"
+import LockOutlinedIcon from "@material-ui/icons/LockOutlined"
+import Typography from "@material-ui/core/Typography"
+import { makeStyles } from "@material-ui/core/styles"
+import Container from "@material-ui/core/Container"
+import { useForm, Controller } from "react-hook-form"
+import { connect } from "react-redux"
+import { registerUser } from "../actions/auth.actions/registerUser"
 
+function Copyright() {
+  return (
+    <Typography variant="body2" color="textSecondary" align="center">
+      {"Copyright © "}
+      <Link color="inherit" href="https://material-ui.com/">
+        Your Website
+      </Link>{" "}
+      {new Date().getFullYear()}
+      {"."}
+    </Typography>
+  )
+}
+
+const useStyles = makeStyles((theme) => ({
+  paper: {
+    marginTop: theme.spacing(8),
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+  },
+  avatar: {
+    margin: theme.spacing(1),
+    backgroundColor: theme.palette.secondary.main,
+  },
+  form: {
+    width: "100%", // Fix IE 11 issue.
+    marginTop: theme.spacing(1),
+  },
+  submit: {
+    margin: theme.spacing(3, 0, 2),
+  },
+}))
 const RegisterPage = ({ registerUser, error }) => {
-  const [hasPasswordShowed, setShowPassword] = useState(false);
+  const [hasPasswordShowed, setShowPassword] = useState(false)
 
   const [userData, setUserData] = useState({
     name: "",
@@ -12,106 +57,127 @@ const RegisterPage = ({ registerUser, error }) => {
     userName: "",
     email: "",
     password: "",
-  });
+  })
 
-  const { name, lastName, userName, email, password } = userData;
-
-  const onChange = (e) =>
-    setUserData({ ...userData, [e.target.name]: e.target.value });
+  const { name, lastName, userName, email, password } = userData
+  const classes = useStyles()
+  const { register, handleSubmit, control } = useForm()
 
   return (
-    <main className="register-page-wrapper">
-      <form className="register-section">
-        <div className="inputs-wrapper">
-          <header className="register-header-wrapper">
-            <p className="font__p p__size register-header">
-              <i className="fas fa-users users-icon app_color_font"></i>
-              Sign Up
-            </p>
-          </header>
+    <Container component="main" maxWidth="xs">
+      <CssBaseline />
+      <div className={classes.paper}>
+        <Avatar className={classes.avatar}>
+          <LockOutlinedIcon />
+        </Avatar>
+        <Typography component="h1" variant="h5">
+          Sign up
+        </Typography>
+        <form
+          className={classes.form}
+          noValidate
+          onSubmit={handleSubmit((userData) => registerUser(userData))}
+        >
+          <Grid container spacing={2}>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                autoComplete="fname"
+                name="name"
+                inputRef={register}
+                variant="outlined"
+                required
+                fullWidth
+                id="name"
+                label="First Name"
+                autoFocus
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                variant="outlined"
+                required
+                inputRef={register}
+                fullWidth
+                id="lastName"
+                label="Last Name"
+                name="lastName"
+                autoComplete="lname"
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                variant="outlined"
+                margin="normal"
+                inputRef={register}
+                required
+                fullWidth
+                id="userName"
+                label="userName"
+                name="userName"
+                autoComplete="userName"
+                autoFocus
+              />
+            </Grid>
 
-          <div className="label-wrapper">
-            <label className="label__register p__size">Name</label>
-          </div>
-
-          <input
-            type="text"
-            name="name"
-            value={name}
-            onChange={(e) => onChange(e)}
-          />
-
-          <div className="label-wrapper">
-            <label className="label__register p__size">Last Name</label>
-          </div>
-          <input
-            type="text"
-            value={lastName}
-            name="lastName"
-            onChange={(e) => onChange(e)}
-          />
-
-          <div className="label-wrapper">
-            <label className="label__register p__size">Username</label>
-          </div>
-          <input
-            type="text"
-            name="userName"
-            value={userName}
-            onChange={(e) => onChange(e)}
-          />
-
-          <div className="label-wrapper">
-            <label className="label__register p__size">E-mail</label>
-          </div>
-          <input
-            name="email"
-            value={email}
-            type="email"
-            onChange={(e) => onChange(e)}
-          />
-
-          <div className="label-wrapper">
-            <label className="label__register p__size">Password</label>
-          </div>
-
-          <input
-            name="password"
-            type={hasPasswordShowed ? "text" : "password"}
-            value={password}
-            onChange={(e) => onChange(e)}
-          />
-
-          <i
-            onClick={() => setShowPassword(!hasPasswordShowed)}
-            className={hasPasswordShowed ? "fas fa-eye" : "fas fa-eye-slash"}
-          ></i>
-
-          <div className="label-wrapper">
-            <p className="p__size font__p password__info">
-              <i className="fas fa-user-check app_color_font"></i> Password must
-              have at least 6 letters
-            </p>
-          </div>
-
-          {error && (error !== null || error !== "" || error !== {}) && (
-            <ErrorMessage errorMessage="Something went wrong..." />
-          )}
-
-          <div
-            className="button-wrapper app_color_background"
-            onClick={() => registerUser(userData)}
+            <Grid item xs={12}>
+              <TextField
+                variant="outlined"
+                required
+                inputRef={register}
+                fullWidth
+                id="email"
+                label="Email Address"
+                name="email"
+                autoComplete="email"
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                variant="outlined"
+                required
+                inputRef={register}
+                fullWidth
+                name="password"
+                label="Password"
+                type="password"
+                id="password"
+                autoComplete="current-password"
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <FormControlLabel
+                control={<Checkbox value="allowExtraEmails" color="primary" />}
+                label="I want to receive inspiration, marketing promotions and updates via email."
+              />
+            </Grid>
+          </Grid>
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            color="primary"
+            className={classes.submit}
           >
-            <p className="button-letter">Sign Up</p>
-          </div>
-        </div>
-      </form>
-    </main>
-  );
-};
+            Sign Up
+          </Button>
+          <Grid container justify="flex-end">
+            <Grid item>
+              <Link href="#" variant="body2">
+                Already have an account? Sign in
+              </Link>
+            </Grid>
+          </Grid>
+        </form>
+      </div>
+      <Box mt={5}>
+        <Copyright />
+      </Box>
+    </Container>
+  )
+}
 
 const mapStateToProps = (state) => ({
   error: state.auth.errors,
-});
+})
 
-export default connect(mapStateToProps, { registerUser })(RegisterPage);
+export default connect(mapStateToProps, { registerUser })(RegisterPage)

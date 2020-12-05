@@ -1,4 +1,4 @@
 {
-  "mongoURI": "mongodb://localhost:27017/newtest",
+  "mongoURI": "mongodb://localhost:27017/fred",
   "jsonWebTokenSecret": "helloWorld"
 }

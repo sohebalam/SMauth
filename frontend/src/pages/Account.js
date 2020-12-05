@@ -6,7 +6,6 @@ import AccountPageSection from "../components/AccountPage/AccountPageSection"
 const Account = ({
   getUserPosts,
   auth: { name, lastName, userName, avatar, email },
-  users: { profilePosts },
 }) => {
   useEffect(() => {
     getUserPosts()
@@ -23,19 +22,6 @@ const Account = ({
           userName={userName}
         />
       </div>
-
-      <div className="user-posts">
-        <header className="user-posts-header-wrapper app_color_background">
-          {profilePosts !== null || profilePosts !== [] ? (
-            <p className="user-posts-header font__p font__bold">Your topics</p>
-          ) : (
-            <p className="user-posts-header font__p font__bold">
-              You haven't made any posts yet
-            </p>
-          )}
-        </header>
-        <UserPostsWrapper posts={profilePosts} />
-      </div>
     </div>
   )
 }
@@ -45,4 +31,4 @@ const mapStateToProps = (state) => ({
   users: state.users,
 })
 
-export default connect(mapStateToProps, { getUserPosts })(Account)
+export default connect(mapStateToProps)(Account)

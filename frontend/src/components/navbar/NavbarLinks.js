@@ -1,15 +1,11 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from "react"
+import { Link } from "react-router-dom"
 
 const NavbarLinks = ({ isLoggedIn, logOut }) => {
   return (
     <div className="nav-links">
       <Link to="/users" className="href__style__remove nav__link">
         Users <i className="fas fa-users"></i>
-      </Link>
-
-      <Link to="/topics" className="href__style__remove nav__link">
-        Topics <i className="fas fa-comments"></i>
       </Link>
 
       <Link
@@ -61,7 +57,7 @@ const NavbarLinks = ({ isLoggedIn, logOut }) => {
         Log Out <i className="fas fa-sign-out-alt"></i>
       </Link>
     </div>
-  );
-};
+  )
+}
 
-export default NavbarLinks;
+export default NavbarLinks
