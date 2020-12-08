@@ -1,5 +1,5 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from "react"
+import { Link } from "react-router-dom"
 
 const User = ({ user }) => {
   return (
@@ -10,14 +10,10 @@ const User = ({ user }) => {
       </div>
 
       <div className="topic-section">
-        <div className="topic-section-links">
-          <div className="link-to-post-page-button app_color_background font__p font__bold p__size">
-            <Link to={`/users/user/${user._id}`}>View Profile</Link>
-          </div>
-        </div>
+        <div className="topic-section-links">{/* user profile */}</div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default User;
+export default User

@@ -16,7 +16,7 @@ import {
   checkActualPasswordValidator,
   changeUserPasswordValidator,
 } from "../middleware/express-validator/expressValidator.js"
-import searchUserByUsername from "../functions/userFunctions/searchUserByUsername.js"
+
 import changeUserData from "../functions/userFunctions/changeUserData.js"
 import checkActualPassword from "../functions/userFunctions/checkActualPassword.js"
 import changeUserPassword from "../functions/userFunctions/changeUserPassword.js"
@@ -34,12 +34,6 @@ router.get("/get_user_by_id/:user_id", getUserById)
 router.post("/register", registerUserValidator, registerUser)
 
 router.post("/login", loginUserValidator, loginUser)
-
-router.put(
-  "/search_by_username",
-  searchUserByUsernameValidator,
-  searchUserByUsername
-)
 
 router.put(
   "/change_user_data/:user_data_to_change",

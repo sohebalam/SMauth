@@ -5,7 +5,7 @@ import RegisterPage from "./pages/RegisterPage"
 import Dashboard from "./pages/Dashboard"
 import ContactPage from "./pages/ContactPage"
 import ChangeProfile from "./pages/ChangeProfile"
-import UserProfile from "./pages/UserProfile.js"
+// import UserProfile from "./pages/UserProfile.js"
 
 import Users from "./pages/Users"
 import Account from "./pages/Account"
@@ -36,9 +36,9 @@ const App = () => {
         <Switch>
           <Route path="/" exact component={LandingPage} />
           <Route path="/contact-us" exact component={ContactPage} />
-          <Route path="/users" exact component={Users} />
+          <PrivateRoute path="/users" exact component={Users} />
 
-          <Route path="/users/user/:user_id" exact component={UserProfile} />
+          {/* <Route path="/users/user/:user_id" exact component={UserProfile} /> */}
 
           <IsLoggedInRoute path="/register" exact component={RegisterPage} />
           <IsLoggedInRoute path="/login" exact component={LoginPage} />
