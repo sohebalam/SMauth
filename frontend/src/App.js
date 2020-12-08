@@ -10,7 +10,9 @@ import UserProfile from "./pages/UserProfile.js"
 import Users from "./pages/Users"
 import Account from "./pages/Account"
 
-import Navbar from "./components/Navbar"
+// import Navbar from "./components/Navbar"
+import Navbar from "./components/header/Head"
+
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
 import store from "./store"
 import { Provider } from "react-redux"
